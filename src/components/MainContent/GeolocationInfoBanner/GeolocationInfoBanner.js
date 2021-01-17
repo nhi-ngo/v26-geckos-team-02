@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
-export default function GeolocationDisclaimer() {
+export default function GeolocationInfoBanner() {
   return (
     <div>
       <Alert severity="info">
