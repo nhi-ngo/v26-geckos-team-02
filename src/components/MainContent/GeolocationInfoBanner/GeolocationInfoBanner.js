@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function GeolocationDisclaimer() {
-  return <div>[Geolocation disclaimer]</div>;
+  return (
+    <div>
+      <strong>INFO BANNER</strong>
+    </div>
+  );
 }
