@@ -23,7 +23,7 @@ export default class MainContent extends Component {
 
     return (
       <div>
-        <h1>[Title/heading]</h1>
+        <h1>Be Save Where You Are!</h1>
 
         {showGeolocationDisclaimer && <GeolocationDisclaimer />}
         {showDataSearchForm && <DataSearchForm />}
