@@ -10,7 +10,6 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      geoLocation: {},
       isGeolocationBlocked: false,
       isGeolocationSupported: true,
     };
