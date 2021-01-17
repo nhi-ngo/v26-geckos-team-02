@@ -19,6 +19,9 @@ export default function SearchLocation() {
   return (
     <div>
       <select id="states">
+        <option value="" disabled>
+          Select a state
+        </option>
         {states.map(state => (
           <option value={state.abbr} key={state.abbr}>
             {state.name}
