@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from "react";
-import data from "./data.json";
+import React from "react";
+import { withRouter } from "react-router-dom";
+class SearchLocation extends React.Component {
+  handleStateChange = e => {
+    this.props.history.push(`/crime/state/${e.target.value}`);
+  };
 
-export default function SearchLocation() {
-  const [states, setStates] = useState([]);
-
-  // const API_KEY = "e14y0OqlWGddCHCXLC3UzLBlcKecsGrxlahVvogx";
-
-  // const stateEl = useRef();
-
-  useEffect(() => {
-    fetchListOfStates();
-  }, []);
-
-  function fetchListOfStates() {
-    setStates(data);
-  }
-
-  return (
-    <div>
-      <select id="states">
-        <option value="" hidden>
-          Select a state
-        </option>
-        {states.map(state => (
-          <option value={state.abbr} key={state.abbr}>
-            {state.name}
+  render() {
+    return (
+      <div>
+        <select id="states" onChange={this.handleStateChange}>
+          <option value="" hidden>
+            Select a state
           </option>
-        ))}
-      </select>
-    </div>
-  );
+          {this.props.states.map(state => (
+            <option value={state.abbr} key={state.abbr}>
+              {state.name}, {state.abbr}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
 }
+
+export default withRouter(SearchLocation);
