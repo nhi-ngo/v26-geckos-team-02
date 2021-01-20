@@ -1,31 +1,29 @@
 import React, { Component } from "react";
-import GeolocationDisclaimer from "./GeolocationDisclaimer/GeolocationDisclaimer";
+import GeolocationInfoBanner from "./GeolocationInfoBanner/GeolocationInfoBanner";
 import DataSearchForm from "./DataSearchForm/DataSearchForm";
 import InteractiveMap from "./InteractiveMap/InteractiveMap";
 import DataGraph from "./DataGraph/DataGraph";
 
 export default class MainContent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      showGeolocationDisclaimer: true,
+      showGeolocationInfoBanner: true,
       showDataSearchForm: false,
       showFullWidthMap: true,
     };
   }
 
   render() {
-    const {
-      showGeolocationDisclaimer,
-      showDataSearchForm,
-      showFullWidthMap,
-    } = this.state;
+    const { showDataSearchForm, showFullWidthMap } = this.state;
+
+    const { showGeolocationInfoBanner } = this.props;
 
     return (
       <div>
-        <h1>[Title/heading]</h1>
+        <h1>Be Save Where You Are!</h1>
 
-        {showGeolocationDisclaimer && <GeolocationDisclaimer />}
+        {showGeolocationInfoBanner && <GeolocationInfoBanner />}
         {showDataSearchForm && <DataSearchForm />}
         <InteractiveMap fullWidth={showFullWidthMap} />
 
