@@ -11,20 +11,12 @@ class dateDropDown extends Component {
         super(props);
 
     }
-    adjustUrl(type, val){
-        
-        let currUrl = "";
+    updateYear(type, val){
         if (type === "fromYear"){
             this.props.updateFromYear(val);
         } else {
             this.props.updateToYear(val); 
         }
-
-        const { history } = this.props;
-        let pathname = history.location.pathname;
-        // /crime/state/AR
-        
-        // history.push(`/crime/state/:${e.target.value}/${e.target.value}`); 
     }
     render(){
         return(
@@ -36,7 +28,7 @@ class dateDropDown extends Component {
                         labelId="from"
                         id="from-year-select"
                         value={this.props.fromYear}
-                        onChange={e =>  this.adjustUrl("fromYear", e.target.value) }
+                        onChange={e =>  this.updateYear("fromYear", e.target.value) }
                         >
                         <MenuItem value={1993}>1993</MenuItem>
                         <MenuItem value={1994}>1994</MenuItem>
@@ -74,7 +66,7 @@ class dateDropDown extends Component {
                         labelId="to-select"
                         id="to-select"
                         value={this.props.toYear}
-                        onChange={e => this.adjustUrl("toYear", e.target.value) }
+                        onChange={e => this.updateYear("toYear", e.target.value) }
                         >
                         <MenuItem value={1993}>1993</MenuItem>
                         <MenuItem value={1994}>1994</MenuItem>
