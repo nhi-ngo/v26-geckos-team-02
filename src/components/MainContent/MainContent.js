@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import GeolocationInfoBanner from "./GeolocationInfoBanner/GeolocationInfoBanner";
 import InteractiveMap from "./InteractiveMap/InteractiveMap";
-import DateDropDown from "./DateDropdown";
-
 
 const ENV_DEV = process.env.NODE_ENV === "development";
 export default class MainContent extends Component {
@@ -12,19 +10,9 @@ export default class MainContent extends Component {
       isGeolocationBlocked: false,
       isGeolocationSupported: true,
       showFullWidthMap: true,
-      fromYear: 1993,
-      toYear: 2000,
     };
-    this.updateToYear = this.updateToYear.bind(this)
-    this.updateFromYear = this.updateFromYear.bind(this)
   }
-  updateToYear(toYear){
-    console.log(toYear)
-    this.setState({ toYear : toYear })
-  }
-  updateFromYear(fromYear){
-    this.setState({ fromYear : fromYear })
-  }
+  
 
   onSuccess = pos => {
     const crds = pos.coords;
@@ -73,9 +61,6 @@ export default class MainContent extends Component {
     return (
       <div>
         <h1>Title/Heading: Be Safe Where You Are!</h1>
-
-        
-        {/* <DateDropDown updateToYear={this.updateToYear} updateFromYear={this.updateFromYear} fromYear={this.state.fromYear} toYear={this.state.toYear}/> */}
         
         {isGeolocationSupported && !isGeolocationBlocked && !coordinates && (
           <GeolocationInfoBanner />
