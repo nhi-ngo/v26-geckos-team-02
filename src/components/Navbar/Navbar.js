@@ -12,7 +12,7 @@ export default function Navbar() {
   const fetchListOfStates = () => {
     setStates(data);
   };
-
+  
   useEffect(() => {
     fetchListOfStates();
   }, []);

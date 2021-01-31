@@ -12,6 +12,7 @@ export default class MainContent extends Component {
       showFullWidthMap: true,
     };
   }
+  
 
   onSuccess = pos => {
     const crds = pos.coords;
@@ -60,7 +61,6 @@ export default class MainContent extends Component {
     return (
       <div>
         <h1>Title/Heading: Be Safe Where You Are!</h1>
-
         {isGeolocationSupported && !isGeolocationBlocked && !coordinates && (
           <GeolocationInfoBanner />
         )}
