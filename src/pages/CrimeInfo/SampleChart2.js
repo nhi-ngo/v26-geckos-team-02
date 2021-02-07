@@ -55,13 +55,12 @@ class SampleChart2 extends Component {
       .enter()
       .append("rect")
       .attr("width", rectWidth)
-      // .attr("height", datapoint => (datapoint / maxVal) * maxValY)
-      .attr("height", datapoint => datapoint * 19)
+      .attr("height", datapoint => (datapoint / maxVal) * maxValY)
 
       // Fill the rectangle in blue
       .attr("fill", "blue")
 
-      // Offset each successive rectangle horizontally by 50 pixels (40px width + a 10px gap between bars)
+      // Offset each successive rectangle horizontally
       .attr("x", (dp, i) => i * (rectWidth + rectGap))
 
       // Ensure that the bars lay on the bottom of the chart
