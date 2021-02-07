@@ -7,7 +7,7 @@ class SearchLocation extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="search-location">
         <select id="states" onChange={this.handleStateChange}>
           <option value="" hidden>
             Select a state

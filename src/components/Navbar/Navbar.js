@@ -20,13 +20,15 @@ export default function Navbar(props) {
   }, []);
 
   return (
-    <Box mt={4}>
+    <Box id="navbar" mt={4}>
       <Grid container justify="space-between">
         <Link to="/" className="logo">
           <Logo />
         </Link>
-        <LocateMeButton />
-        <SearchLocation states={states} />
+        <Grid container justify="space-between" style={{width:"auto"}}>
+          <SearchLocation states={states} />
+          <LocateMeButton />
+        </Grid>
       </Grid>
     </Box>
   );

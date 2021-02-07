@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+body {
+  font-family: 'Lato', sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -27,7 +32,69 @@
 .App-link {
   color: #61dafb;
 }
-
+.light-green {
+  color: #049c0b;
+}
+.no-margin {
+  margin: 0;
+}
+.title-container {
+  text-align: center;
+  margin: 2rem 0;
+}
+.logo {
+  width: 100px;
+}
+#search-location {
+  margin-right: 32px;
+  align-self: center;
+}
+#states {
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  width: 164px;
+  padding: 12px 12px;
+  border: 1px solid #121212;
+}
+.banner-container {
+  background-color: #121212;
+  color: white;
+  padding: 24px 48px;
+  display: flex;
+}
+.banner-container img {
+  width: 84px;
+  height: fit-content;
+  margin-right: 1rem;
+}
+.banner-container p {
+  margin: 0;
+  margin-top: 1rem;
+}
+.locate-me-container {
+  width: 164px;
+  align-self: center;
+  text-align: center;
+}
+.locate-me-btn {
+  padding: 12px 24px;
+}
+.locate-me-btn {
+  cursor: pointer;
+  border: 1px solid #121212;
+  background-color: #121212;
+  color: #ffffff;
+}
+.MuiAlert-standardInfo {
+  color: white;
+  background-color: #121212;
+}
+.MuiAlert-standardInfo .MuiAlert-icon {
+  color: white;
+}
+.footer {
+  font-weight: 500;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
