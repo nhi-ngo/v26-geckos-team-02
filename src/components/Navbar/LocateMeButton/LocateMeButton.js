@@ -4,13 +4,12 @@ import Button from "@material-ui/core/Button";
 export default function LocateMeButton() {
   return (
     <div>
-      <Button
-        variant="contained"
-        color="primary"
+      <div
+        className="locate-me-btn"
         onClick={() => clickLocateMe()}
       >
         Locate Me
-      </Button>
+      </div>
     </div>
   );
 }

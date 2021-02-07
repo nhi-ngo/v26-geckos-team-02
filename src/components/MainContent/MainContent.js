@@ -60,7 +60,10 @@ export default class MainContent extends Component {
 
     return (
       <div>
-        <h1>Title/Heading: Be Safe Where You Are!</h1>
+        <div className="title-container">
+          <h1 className="light-green no-margin">Knowledge = Safety, Safety = power. </h1>
+          <h1 className="light-green no-margin"> Be in a State of Safety</h1>
+        </div>
         {isGeolocationSupported && !isGeolocationBlocked && !coordinates && (
           <GeolocationInfoBanner />
         )}
