@@ -85,7 +85,16 @@ class SampleChart2 extends Component {
     this.svgCanvas
       .append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(
+        d3
+          .axisBottom(x)
+          // Specify number of ticks and labels on X axis
+          .tickValues(
+            Array.from({ length: data.length }, (_, i) => String(fromYear + i)),
+          )
+          // Specify tick format
+          .tickFormat(d3.format(".0f")),
+      );
 
     // Add X axis label
     this.svgCanvas
