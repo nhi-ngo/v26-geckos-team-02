@@ -5,7 +5,6 @@ export default class CrimeChart extends Component {
   constructor(props) {
     super(props);
     this.chartRef = React.createRef();
-    this.temps = React.createRef();
   }
 
   createChart = data => {};

@@ -22,6 +22,8 @@ class SampleChart2 extends Component {
       .attr("width", canvasWidth)
       .attr("height", canvasHeight)
       .style("border", "1px solid black");
+
+    this.drawBarChart(this.props);
   }
 
   componentDidUpdate() {
@@ -34,6 +36,10 @@ class SampleChart2 extends Component {
     const { data, fromYear, toYear } = props;
     const canvasHeight = 400,
       canvasWidth = 600;
+
+    var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+      width = 460 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
     // Adjust rectangle width based on number of data points
     const rectGap = 10,
@@ -64,7 +70,28 @@ class SampleChart2 extends Component {
       .attr("x", (dp, i) => i * (rectWidth + rectGap))
 
       // Ensure that the bars lay on the bottom of the chart
-      .attr("y", (dp, i) => canvasHeight - (dp / maxVal) * maxValY);
+      .attr("y", (dp, i) => height - (dp / maxVal) * maxValY);
+
+    // Add X axis data points
+    const x = d3
+      .scaleLinear()
+      .domain([fromYear, toYear])
+      .range([rectWidth / 2, canvasWidth - rectGap - rectWidth / 2]);
+    this.svgCanvas
+      .append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+    console.log("x: ", x);
+
+    // Add X axis label
+    this.svgCanvas
+      .append("text")
+      .attr("class", "x label")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height + 30)
+      .text("Year");
   }
 
   render() {
