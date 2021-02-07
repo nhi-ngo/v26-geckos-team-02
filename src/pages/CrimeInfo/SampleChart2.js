@@ -11,9 +11,18 @@ class SampleChart2 extends Component {
     this.sampleChart2 = React.createRef();
   }
 
-  // componentDidMount() {
-  //   this.drawBarChart(this.props);
-  // }
+  componentDidMount() {
+    // Create a canvas element with specified dimensions and a border
+    const canvasHeight = 400,
+      canvasWidth = 600;
+
+    this.svgCanvas = d3
+      .select(this.sampleChart2.current)
+      .append("svg")
+      .attr("width", canvasWidth)
+      .attr("height", canvasHeight)
+      .style("border", "1px solid black");
+  }
 
   componentDidUpdate() {
     this.drawBarChart(this.props);
@@ -23,13 +32,12 @@ class SampleChart2 extends Component {
   drawBarChart(props) {
     // Destructure props
     const { data, fromYear, toYear } = props;
-
     const canvasHeight = 400,
       canvasWidth = 600;
 
     // Adjust rectangle width based on number of data points
-    const rectWidth = canvasWidth / (data.length * 1.3),
-      rectGap = 10;
+    const rectGap = 10,
+      rectWidth = canvasWidth / data.length - rectGap;
 
     /* Normalize the height of the rectangles based on the max value (2 steps) */
     // step 1: Find max value
@@ -38,21 +46,15 @@ class SampleChart2 extends Component {
     // step 2: max value will always be at 95% of the canvas height, and the other values will adjust accordingly
     const maxValY = canvasHeight * 0.95;
 
-    // Create a canvas element with specified dimensions and a border
-    const svgCanvas = d3
-      .select(this.sampleChart2.current)
-      .append("svg")
-      .attr("width", canvasWidth)
-      .attr("height", canvasHeight)
-      .style("border", "1px solid black");
+    this.svgCanvas.selectAll("*").remove();
 
     // For each element of the `data` array, create a rectangle 40px wide and (datapoint * 20)px tall
-    svgCanvas
+    this.svgCanvas
       .selectAll("rect")
       .data(data)
       .enter()
       .append("rect")
-      .attr("width", 40)
+      .attr("width", rectWidth)
       // .attr("height", datapoint => (datapoint / maxVal) * maxValY)
       .attr("height", datapoint => datapoint * 19)
 

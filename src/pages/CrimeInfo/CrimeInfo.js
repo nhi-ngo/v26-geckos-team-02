@@ -48,27 +48,6 @@ export default function CrimeInfo(props) {
     );
   };
 
-  const renderList = () => {
-    return info.map(entry => {
-      return (
-        <li key={entry.year}>
-          {entry.year} - {crimeType}:{" "}
-          {crimeType === "Rape"
-            ? entry.rape_legacy
-            : crimeType === "Robbery"
-            ? entry.robbery
-            : crimeType === "Arson"
-            ? entry.arson
-            : crimeType === "Larceny"
-            ? entry.larceny
-            : crimeType === "Burglary"
-            ? entry.burglary
-            : entry.homicide}
-        </li>
-      );
-    });
-  };
-
   // Build a data array from the selected data
   const filterData = (crimeData, type) =>
     crimeData.map(item => {
@@ -102,10 +81,8 @@ export default function CrimeInfo(props) {
 
       <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
 
-      <ul>{renderList()}</ul>
-
       <CrimeChart data={info} />
-      <SampleChart1 />
+      {/* <SampleChart1 /> */}
       <SampleChart2
         data={filterData(info, crimeType)}
         crimeType={crimeType}
