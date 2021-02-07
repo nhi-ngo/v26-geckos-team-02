@@ -26,11 +26,9 @@ export default function Navbar(props) {
           <Logo />
         </Link>
         <Grid container justify="space-between" style={{width:"auto"}}>
-        
           <SearchLocation states={states} />
           <LocateMeButton />
-          </Grid>
-        
+        </Grid>
       </Grid>
     </Box>
   );
