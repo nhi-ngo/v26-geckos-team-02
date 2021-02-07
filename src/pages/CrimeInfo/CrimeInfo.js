@@ -81,8 +81,15 @@ export default function CrimeInfo(props) {
 
       <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
 
-      <CrimeChart data={info} />
+      <CrimeChart
+        data={filterData(info, crimeType)}
+        crimeType={crimeType}
+        fromYear={fromYear}
+        toYear={toYear}
+      />
+
       {/* <SampleChart1 /> */}
+
       <SampleChart2
         data={filterData(info, crimeType)}
         crimeType={crimeType}
