@@ -37,24 +37,25 @@ class SampleChart2 extends Component {
     const canvasHeight = 400,
       canvasWidth = 600;
 
-    var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-      width = 460 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+    const margin = { top: 10, right: 20, bottom: 30, left: 20 },
+      width = canvasWidth - margin.left - margin.right,
+      height = canvasHeight - margin.top - margin.bottom;
 
     // Adjust rectangle width based on number of data points
     const rectGap = 10,
-      rectWidth = canvasWidth / data.length - rectGap;
+      rectWidth = width / data.length - rectGap;
 
     /* Normalize the height of the rectangles based on the max value (2 steps) */
     // step 1: Find max value
     const maxVal = Math.max(...data);
 
     // step 2: max value will always be at 95% of the canvas height, and the other values will adjust accordingly
-    const maxValY = canvasHeight * 0.95;
+    const maxValY = height * 0.95;
 
+    // Clear previous graph
     this.svgCanvas.selectAll("*").remove();
 
-    // For each element of the `data` array, create a rectangle 40px wide and (datapoint * 20)px tall
+    // For each element of the `data` array, create a rectangle
     this.svgCanvas
       .selectAll("rect")
       .data(data)
@@ -67,7 +68,7 @@ class SampleChart2 extends Component {
       .attr("fill", "blue")
 
       // Offset each successive rectangle horizontally
-      .attr("x", (dp, i) => i * (rectWidth + rectGap))
+      .attr("x", (dp, i) => margin.left + i * (rectWidth + rectGap))
 
       // Ensure that the bars lay on the bottom of the chart
       .attr("y", (dp, i) => height - (dp / maxVal) * maxValY);
@@ -76,22 +77,43 @@ class SampleChart2 extends Component {
     const x = d3
       .scaleLinear()
       .domain([fromYear, toYear])
-      .range([rectWidth / 2, canvasWidth - rectGap - rectWidth / 2]);
+      .range([
+        margin.left + rectWidth / 2,
+        margin.left + rectWidth / 2 + (data.length - 1) * (rectWidth + rectGap),
+      ]);
+
     this.svgCanvas
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
-
-    console.log("x: ", x);
 
     // Add X axis label
     this.svgCanvas
       .append("text")
       .attr("class", "x label")
       .attr("text-anchor", "end")
-      .attr("x", width)
-      .attr("y", height + 30)
+      .attr("x", width / 2)
+      .attr("y", height + 33)
       .text("Year");
+
+    console.log("DATA: ", data);
+
+    // Y axis data points
+    const y = d3
+      .scaleLinear()
+      .domain([0, Math.max(data)])
+      .range([height, 0]);
+
+    this.svgCanvas.append("g").call(d3.axisLeft(y));
+
+    // Y axis label
+    this.svgCanvas
+      .append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("x", 0)
+      .attr("y", height / 2)
+      .text("Amount");
   }
 
   render() {
