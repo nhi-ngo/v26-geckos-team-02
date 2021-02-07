@@ -7,18 +7,22 @@ const ENV_DEV = process.env.NODE_ENV === "development";
 class CrimeChart extends Component {
   constructor(props) {
     super(props);
-
-    this.svg = null;
     this.crimeChart = React.createRef();
+    this.state = {};
   }
 
   componentDidMount() {
     // Create a canvas element with specified dimensions and a border
-
     this.drawBarChart(this.props);
   }
 
   componentDidUpdate() {
+    // Remove previous graphs before creating the next
+    const chart = document.querySelector(".crimeChart");
+    while (chart.firstChild) {
+      chart.removeChild(chart.lastChild);
+    }
+
     this.drawBarChart(this.props);
     ENV_DEV && console.log(`Data to plot: ${this.props.data}`);
   }
@@ -143,7 +147,7 @@ class CrimeChart extends Component {
     return (
       <div>
         <h3>{this.props.crimeType} data</h3>
-        <div ref={this.crimeChart}></div>
+        <div ref={this.crimeChart} className="crimeChart"></div>
       </div>
     );
   }
