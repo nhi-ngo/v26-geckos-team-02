@@ -37,7 +37,10 @@ class SampleChart2 extends Component {
     const canvasHeight = 400,
       canvasWidth = 600;
 
-    const margin = { top: 10, right: 20, bottom: 30, left: 20 },
+    // The Y coordinate of the max value will always be at 95% of the canvas height, and the other values will adjust accordingly
+    const maxYRatio = 0.95;
+
+    const margin = { top: 10, right: 20, bottom: 30, left: 50 },
       width = canvasWidth - margin.left - margin.right,
       height = canvasHeight - margin.top - margin.bottom;
 
@@ -45,11 +48,8 @@ class SampleChart2 extends Component {
     const rectGap = 10,
       rectWidth = width / data.length - rectGap;
 
-    /* Normalize the height of the rectangles based on the max value (2 steps) */
-    // step 1: Find max value
+    /* Normalize the height of the rectangles based on the max value */
     const maxVal = Math.max(...data);
-
-    // step 2: max value will always be at 95% of the canvas height, and the other values will adjust accordingly
     const maxValY = height * 0.95;
 
     // Clear previous graph
@@ -71,7 +71,7 @@ class SampleChart2 extends Component {
       .attr("x", (dp, i) => margin.left + i * (rectWidth + rectGap))
 
       // Ensure that the bars lay on the bottom of the chart
-      .attr("y", (dp, i) => height - (dp / maxVal) * maxValY);
+      .attr("y", dp => height - (dp / maxVal) * maxValY);
 
     // Add X axis data points
     const x = d3
@@ -92,28 +92,20 @@ class SampleChart2 extends Component {
       .append("text")
       .attr("class", "x label")
       .attr("text-anchor", "end")
-      .attr("x", width / 2)
+      .attr("x", margin.left + width / 2)
       .attr("y", height + 33)
       .text("Year");
-
-    console.log("DATA: ", data);
 
     // Y axis data points
     const y = d3
       .scaleLinear()
-      .domain([0, Math.max(data)])
+      .domain([0, Math.max(...data) / maxYRatio])
       .range([height, 0]);
 
-    this.svgCanvas.append("g").call(d3.axisLeft(y));
-
-    // Y axis label
     this.svgCanvas
-      .append("text")
-      .attr("class", "y label")
-      .attr("text-anchor", "end")
-      .attr("x", 0)
-      .attr("y", height / 2)
-      .text("Amount");
+      .append("g")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .call(d3.axisLeft(y));
   }
 
   render() {
