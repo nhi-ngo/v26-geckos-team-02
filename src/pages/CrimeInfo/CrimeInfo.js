@@ -4,6 +4,9 @@ import Divider from "@material-ui/core/Divider";
 
 import DateDropdown from "./DateDropdown";
 import CrimeTypeDropdown from "./CrimeTypeDropdown";
+import CrimeChart from "./CrimeChart";
+import SampleChart1 from "./SampleChart1";
+import SampleChart2 from "./SampleChart2";
 import stateData from "../../../src/components/Navbar/data.json";
 
 export default function CrimeInfo(props) {
@@ -28,7 +31,7 @@ export default function CrimeInfo(props) {
       .get(
         `https://api.usa.gov/crime/fbi/sapi/api/estimates/states/${props.match.params.stateId}/${fromYear}/${toYear}?API_KEY=${API_KEY}`,
       )
-      .then(res => setInfo(res.data.results));
+      .then(res => setInfo(res.data.results.sort((a, b) => a.year - b.year)));
   };
 
   useEffect(() => {
@@ -66,6 +69,25 @@ export default function CrimeInfo(props) {
     });
   };
 
+  // Build a data array from the selected data
+  const filterData = (crimeData, type) =>
+    crimeData.map(item => {
+      switch (type) {
+        case "Rape":
+          return item.rape_legacy;
+        case "Robbery":
+          return item.robbery;
+        case "Arson":
+          return item.arson;
+        case "Larceny":
+          return item.larceny;
+        case "Burglary":
+          return item.burglary;
+        default:
+          return item.homicide;
+      }
+    });
+
   return (
     <div>
       <h1>{abbrToState()} </h1>
@@ -81,6 +103,15 @@ export default function CrimeInfo(props) {
       <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
 
       <ul>{renderList()}</ul>
+
+      <CrimeChart data={info} />
+      <SampleChart1 />
+      <SampleChart2
+        data={filterData(info, crimeType)}
+        crimeType={crimeType}
+        fromYear={fromYear}
+        toYear={toYear}
+      />
     </div>
   );
 }
