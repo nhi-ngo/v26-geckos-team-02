@@ -92,9 +92,8 @@ body {
 .MuiAlert-standardInfo .MuiAlert-icon {
   color: white;
 }
-
 .footer {
-  font-weight: 600;
+  font-weight: 500;
 }
 @keyframes App-logo-spin {
   from {
