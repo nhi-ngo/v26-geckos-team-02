@@ -28,7 +28,6 @@ class SampleChart2 extends Component {
 
   componentDidUpdate() {
     this.drawBarChart(this.props);
-    ENV_DEV && console.log(`Data to plot: ${this.props.data}`);
   }
 
   drawBarChart(props) {

@@ -24,7 +24,6 @@ class CrimeChart extends Component {
     }
 
     this.drawBarChart(this.props);
-    ENV_DEV && console.log(`Data to plot: ${this.props.data}`);
   }
 
   drawBarChart(props) {
