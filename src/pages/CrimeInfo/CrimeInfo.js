@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Divider from "@material-ui/core/Divider";
+import { Grid, Box } from "@material-ui/core";
 
 import DateDropdown from "./DateDropdown";
 import CrimeTypeDropdown from "./CrimeTypeDropdown";
@@ -69,17 +69,24 @@ export default function CrimeInfo(props) {
 
   return (
     <div>
-      <h1>{abbrToState()} </h1>
-      <Divider />
+      <div className = "crime-info-heading-container" >
+        <h1 className="crime-info-heading">Crime data for <i>{abbrToState()}</i></h1>
+      </div>
 
-      <DateDropdown
-        fromYear={fromYear}
-        toYear={toYear}
-        updateFromYear={updateFrom}
-        updateToYear={updateTo}
-      />
+      <Box display="flex" justifyContent="center" flexWrap="wrap">
+        <Box p={1}>
+          <DateDropdown
+            fromYear={fromYear}
+            toYear={toYear}
+            updateFromYear={updateFrom}
+            updateToYear={updateTo}
+          />
+        </Box>
 
-      <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
+        <Box p={1}>
+          <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
+        </Box>
+      </Box>
 
       <CrimeChart
         data={filterData(info, crimeType)}
@@ -87,8 +94,6 @@ export default function CrimeInfo(props) {
         fromYear={fromYear}
         toYear={toYear}
       />
-
-      {/* <SampleChart1 /> */}
 
       <SampleChart2
         data={filterData(info, crimeType)}
