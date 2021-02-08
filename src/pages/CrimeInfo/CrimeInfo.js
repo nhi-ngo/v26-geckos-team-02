@@ -73,7 +73,7 @@ export default function CrimeInfo(props) {
         <h1 className="crime-info-heading">Crime data for <i>{abbrToState()}</i></h1>
       </div>
 
-      <Box className="crime-date-type-container" display="flex" justifyContent="center" flexWrap="wrap">
+      <Box display="flex" justifyContent="center" flexWrap="wrap">
         <Box p={1}>
           <DateDropdown
             fromYear={fromYear}
@@ -94,8 +94,6 @@ export default function CrimeInfo(props) {
         fromYear={fromYear}
         toYear={toYear}
       />
-
-      {/* <SampleChart1 /> */}
 
       <SampleChart2
         data={filterData(info, crimeType)}
