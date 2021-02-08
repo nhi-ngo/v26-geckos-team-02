@@ -25,10 +25,12 @@ class dateDropDown extends Component {
         {/* 1993 - 2019 */}
         <FormControl
           className="date-dropdown"
-          style={{ width: "180px", margin: "1rem" }}
+          style={{ width: "180px", paddingLeft: "1rem", backgroundColor:"#121212" }}
         >
-          <InputLabel id="from">From</InputLabel>
+          <InputLabel id="from" style={{color: "white", paddingLeft: "1rem", paddingTop: "0.2rem" }}>From</InputLabel>
+
           <Select
+            style={{color: "white", fontWeight: "bold"}}
             labelId="from"
             id="from-year-select"
             value={this.props.fromYear}
@@ -66,10 +68,11 @@ class dateDropDown extends Component {
 
         <FormControl
           className="date-dropdown"
-          style={{ width: "180px", margin: "1rem" }}
+          style = {{ width: "180px", marginLeft: "1rem", paddingLeft: "1rem", backgroundColor: "#121212" }}
         >
-          <InputLabel id="to-select">To</InputLabel>
+          <InputLabel id="to-select" style={{color: "white", paddingLeft: "1rem", paddingTop: "0.2rem" }}>To</InputLabel>
           <Select
+            style={{color: "white", fontWeight: "bold"}}
             labelId="to-select"
             id="to-select"
             value={this.props.toYear}

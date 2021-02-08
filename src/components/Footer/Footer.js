@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-
+import Divider from "@material-ui/core/Divider";
 export default class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        
+
+      <Divider />
         <p>
          Data Disclaimer: Please note that information provided on this website is based on the
           data from&nbsp;
@@ -16,7 +17,7 @@ export default class Footer extends Component {
           completeness, or reliability of the information contained on the
           website.
         </p>
-        
+
         <p>
           Use of Location Disclaimer: CrimeApp(or the name of the app here) asks you to share your location
           only while the app is in use. Your location data will be used to
@@ -24,6 +25,7 @@ export default class Footer extends Component {
           crime data in that state.
         </p>
       </div>
+
     );
   }
 }

@@ -15,11 +15,12 @@ export default function CrimeTypeDropdown(props) {
     <div>
       <FormControl
         className="crimeTypes-dropdown"
-        style={{ width: "390px", margin: "1rem" }}
+        style={{ width: "390px", backgroundColor:"#121212", marginLeft: "0.5rem" }}
       >
-        <InputLabel id="crimeTypes">Select a Crime Type</InputLabel>
+        <InputLabel id="crimeTypes" style={{color: "white", paddingLeft:"1rem", paddingTop: "0.2rem" }}>Select a Crime Type</InputLabel>
 
         <Select
+          style={{color: "white", fontWeight: "bold", paddingLeft: "1rem" }}
           labelId="crimeTypes"
           id="crimeTypes"
           value={props.type}
