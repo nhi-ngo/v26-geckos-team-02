@@ -10,7 +10,27 @@ export default class InteractiveMap extends Component {
     this.interactiveMap = React.createRef();
   }
 
-  reset = () => {};
+  reset = () => {
+    console.log("RESET CALLED");
+
+    this.states.transition().style("fill", null);
+    this.svg
+      .transition()
+      .duration(750)
+      .call(
+        zoom.transform,
+        d3.zoomIdentity,
+        d3.zoomTransform(svg.node()).invert([width / 2, height / 2]),
+      );
+  };
+
+  zoomed = evt => {
+    console.log("ZOOMED CALLED");
+
+    const { transform } = evt;
+    this.g.attr("transform", transform);
+    this.g.attr("stroke-width", 1 / transform.k);
+  };
 
   componentDidMount() {
     const path = d3.geoPath();
@@ -19,6 +39,8 @@ export default class InteractiveMap extends Component {
     const width = 975,
       height = 610;
 
+    const zoom = d3.zoom().scaleExtent([1, 8]).on("zoom", this.zoomed);
+
     this.svg = d3
       .select(this.interactiveMap.current)
       .append("svg")
@@ -26,9 +48,9 @@ export default class InteractiveMap extends Component {
       .style("border", "1px solid black");
     // .on("click", this.reset);
 
-    const g = this.svg.append("g");
+    this.g = this.svg.append("g");
 
-    this.states = g
+    this.states = this.g
       .append("g")
       .attr("fill", "#444")
       .attr("cursor", "pointer")
@@ -37,6 +59,15 @@ export default class InteractiveMap extends Component {
       .join("path")
       // .on("click", clicked)
       .attr("d", path);
+
+    this.g
+      .append("path")
+      .attr("fill", "none")
+      .attr("stroke", "white")
+      .attr("stroke-linejoin", "round")
+      .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+
+    this.svg.call(zoom);
 
     console.log("test file", testfile);
   }
