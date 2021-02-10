@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
-import us from "./states-albers-10m.json";
+import us from "../../../data/states-albers-10m.json";
 import { withRouter } from "react-router-dom";
 import statesAbbr from "../../../data/states.json";
 
@@ -103,6 +103,7 @@ class InteractiveMap extends Component {
         this.path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)),
       );
 
+    // Results page
     if (regexResult) {
       const stateName = statesAbbr.find(state => state.abbr === regexResult[1])
         .name;
@@ -144,7 +145,11 @@ class InteractiveMap extends Component {
   }
 
   render() {
-    return <div ref={this.interactiveMap}></div>;
+    const { fullWidth } = this.props;
+
+    const styleObj = fullWidth ? {} : { width: "400px", height: "300px" };
+
+    return <div style={styleObj} ref={this.interactiveMap}></div>;
   }
 }
 

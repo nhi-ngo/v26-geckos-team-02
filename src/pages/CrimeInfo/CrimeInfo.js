@@ -91,7 +91,7 @@ export default function CrimeInfo(props) {
         </Box>
       </Box>
 
-      <InteractiveMap />
+      <InteractiveMap fullWidth={false} />
 
       <CrimeChart
         data={filterData(info, crimeType)}
