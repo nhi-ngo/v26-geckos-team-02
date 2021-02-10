@@ -40,7 +40,7 @@ export default class InteractiveMap extends Component {
 
     event.stopPropagation();
     this.states.transition().style("fill", null);
-    // d3.select(this).transition().style("fill", "red");
+    d3.select(event.target).transition().style("fill", "red");
 
     this.svg
       .transition()
@@ -58,6 +58,8 @@ export default class InteractiveMap extends Component {
           .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
         d3.pointer(event, this.svg.node()),
       );
+
+    console.log("CLICKED ON: ", d.properties.name);
   };
 
   componentDidMount() {
