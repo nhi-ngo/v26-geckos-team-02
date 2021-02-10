@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
-import testfile from "./states-albers-10m.json";
+import us from "./states-albers-10m.json";
 
 export default class InteractiveMap extends Component {
   constructor(props) {
@@ -28,8 +28,6 @@ export default class InteractiveMap extends Component {
   };
 
   zoomed = evt => {
-    console.log("ZOOMED CALLED");
-
     const { transform } = evt;
     this.g.attr("transform", transform);
     this.g.attr("stroke-width", 1 / transform.k);
@@ -38,9 +36,11 @@ export default class InteractiveMap extends Component {
   clicked = (event, d) => {
     const [[x0, y0], [x1, y1]] = this.path.bounds(d);
 
+    console.log("D IS: ", d, x0, y0, x1, y1);
+
     event.stopPropagation();
     this.states.transition().style("fill", null);
-    d3.select(this).transition().style("fill", "red");
+    // d3.select(this).transition().style("fill", "red");
 
     this.svg
       .transition()
@@ -62,7 +62,6 @@ export default class InteractiveMap extends Component {
 
   componentDidMount() {
     this.path = d3.geoPath();
-    const us = testfile;
 
     this.zoom = d3.zoom().scaleExtent([1, 8]).on("zoom", this.zoomed);
 
