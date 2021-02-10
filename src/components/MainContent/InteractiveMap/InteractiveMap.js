@@ -14,8 +14,6 @@ class InteractiveMap extends Component {
   }
 
   reset = () => {
-    console.log("RESET CALLED");
-
     this.states.transition().style("fill", null);
     this.svg
       .transition()
@@ -37,8 +35,6 @@ class InteractiveMap extends Component {
 
   clicked = (event, d) => {
     const [[x0, y0], [x1, y1]] = this.path.bounds(d);
-
-    console.log("D IS: ", d, x0, y0, x1, y1);
 
     event.stopPropagation();
     this.states.transition().style("fill", null);
@@ -70,8 +66,11 @@ class InteractiveMap extends Component {
 
   componentDidMount() {
     this.path = d3.geoPath();
-
     this.zoom = d3.zoom().scaleExtent([1, 8]).on("zoom", this.zoomed);
+
+    const regexResult = this.props.location.pathname.match(
+      /\/crime\/state\/([A-Z]{2})/,
+    );
 
     this.svg = d3
       .select(this.interactiveMap.current)
@@ -103,6 +102,43 @@ class InteractiveMap extends Component {
         "d",
         this.path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)),
       );
+
+    if (regexResult) {
+      const stateName = statesAbbr.find(state => state.abbr === regexResult[1])
+        .name;
+
+      const obj = this.states._groups[0].find(
+        state => state.textContent === stateName,
+      );
+
+      const [[x0, y0], [x1, y1]] = this.path.bounds(
+        topojson.feature(us, us.objects.states).features[
+          this.states._groups[0].findIndex(
+            state => state.textContent === stateName,
+          )
+        ],
+      );
+
+      this.states.transition().style("fill", null);
+      d3.select(obj).transition().style("fill", "red");
+
+      this.svg
+        .transition()
+        .duration(750)
+        .call(
+          this.zoom.transform,
+          d3.zoomIdentity
+            .translate(this.width / 2, this.height / 2)
+            .scale(
+              Math.min(
+                8,
+                0.9 / Math.max((x1 - x0) / this.width, (y1 - y0) / this.height),
+              ),
+            )
+            .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+          // d3.pointer(event, this.svg.node()),
+        );
+    }
 
     this.svg.call(this.zoom);
   }

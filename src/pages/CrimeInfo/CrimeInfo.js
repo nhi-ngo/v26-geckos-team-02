@@ -8,6 +8,7 @@ import CrimeChart from "./CrimeChart";
 import SampleChart1 from "./SampleChart1";
 import SampleChart2 from "./SampleChart2";
 import stateData from "../../../src/data/states.json";
+import InteractiveMap from "../../components/MainContent/InteractiveMap/InteractiveMap";
 
 export default function CrimeInfo(props) {
   const [info, setInfo] = useState([]);
@@ -89,6 +90,8 @@ export default function CrimeInfo(props) {
           <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
         </Box>
       </Box>
+
+      <InteractiveMap />
 
       <CrimeChart
         data={filterData(info, crimeType)}
