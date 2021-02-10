@@ -146,7 +146,6 @@ class InteractiveMap extends Component {
 
   render() {
     const { fullWidth } = this.props;
-
     const styleObj = fullWidth ? {} : { width: "400px", height: "300px" };
 
     return <div style={styleObj} ref={this.interactiveMap}></div>;
