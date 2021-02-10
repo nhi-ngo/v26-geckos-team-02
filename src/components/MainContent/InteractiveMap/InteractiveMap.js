@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 import us from "./states-albers-10m.json";
+import { withRouter } from "react-router-dom";
+import statesAbbr from "../../../data/states.json";
 
-export default class InteractiveMap extends Component {
+class InteractiveMap extends Component {
   constructor(props) {
     super(props);
     this.interactiveMap = React.createRef();
@@ -59,7 +61,11 @@ export default class InteractiveMap extends Component {
         d3.pointer(event, this.svg.node()),
       );
 
-    console.log("CLICKED ON: ", d.properties.name);
+    this.props.history.push(
+      `/crime/state/${
+        statesAbbr.find(state => state.name === d.properties.name).abbr
+      }`,
+    );
   };
 
   componentDidMount() {
@@ -105,3 +111,5 @@ export default class InteractiveMap extends Component {
     return <div ref={this.interactiveMap}></div>;
   }
 }
+
+export default withRouter(InteractiveMap);
