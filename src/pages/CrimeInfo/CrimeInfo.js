@@ -5,14 +5,14 @@ import { Grid, Box } from "@material-ui/core";
 import DateDropdown from "./DateDropdown";
 import CrimeTypeDropdown from "./CrimeTypeDropdown";
 import CrimeChart from "./CrimeChart";
-import SampleChart1 from "./SampleChart1";
+import NhiChart from "./NhiChart";
 import SampleChart2 from "./SampleChart2";
 import stateData from "../../../src/data/states.json";
 import InteractiveMap from "../../components/MainContent/InteractiveMap/InteractiveMap";
 
 export default function CrimeInfo(props) {
   const [info, setInfo] = useState([]);
-  const [fromYear, setFromYear] = useState(1998);
+  const [fromYear, setFromYear] = useState(2005);
   const [toYear, setToYear] = useState(2010);
   const [crimeType, setCrimeType] = useState("Homicide");
 
@@ -93,19 +93,26 @@ export default function CrimeInfo(props) {
 
       <InteractiveMap fullWidth={false} />
 
-      <CrimeChart
+      <NhiChart
         data={filterData(info, crimeType)}
         crimeType={crimeType}
         fromYear={fromYear}
         toYear={toYear}
       />
 
-      <SampleChart2
+      {/* <CrimeChart
         data={filterData(info, crimeType)}
         crimeType={crimeType}
         fromYear={fromYear}
         toYear={toYear}
-      />
+      /> */}
+
+      {/* <SampleChart2
+        data={filterData(info, crimeType)}
+        crimeType={crimeType}
+        fromYear={fromYear}
+        toYear={toYear}
+      /> */}
     </div>
   );
 }
