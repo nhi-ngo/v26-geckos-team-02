@@ -69,8 +69,10 @@ export default function CrimeInfo(props) {
 
   return (
     <div>
-      <div className = "crime-info-heading-container" >
-        <h1 className="crime-info-heading">Crime data for <i>{abbrToState()}</i></h1>
+      <div className="crime-info-heading-container">
+        <h1 className="crime-info-heading">
+          Crime data for <i>{abbrToState()}</i>
+        </h1>
       </div>
 
       <Box display="flex" justifyContent="center" flexWrap="wrap">
@@ -92,7 +94,8 @@ export default function CrimeInfo(props) {
         data={filterData(info, crimeType)}
         crimeType={crimeType}
         fromYear={fromYear}
-        toYear={toYear}/>
+        toYear={toYear}
+      />
 
       {/* <CrimeChart
         data={filterData(info, crimeType)}
@@ -101,12 +104,12 @@ export default function CrimeInfo(props) {
         toYear={toYear}
       /> */}
 
-      <SampleChart2
+      {/* <SampleChart2
         data={filterData(info, crimeType)}
         crimeType={crimeType}
         fromYear={fromYear}
         toYear={toYear}
-      />
+      /> */}
     </div>
   );
 }
