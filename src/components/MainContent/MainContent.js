@@ -10,10 +10,8 @@ export default class MainContent extends Component {
     this.state = {
       isGeolocationBlocked: false,
       isGeolocationSupported: true,
-      showFullWidthMap: true,
     };
   }
-
 
   onSuccess = pos => {
     const crds = pos.coords;
@@ -57,22 +55,28 @@ export default class MainContent extends Component {
       coordinates,
     } = this.state;
 
-    const { showFullWidthMap } = this.state;
-
     return (
       <div>
         <div className="title-container">
-          <h1 className="light-green no-margin">Knowledge = safety, Safety = power. </h1>
-          <h1 className="light-green no-margin"> Be in a <i>State of Safety</i></h1>
+          <h1 className="light-green no-margin">
+            Knowledge = safety, Safety = power.{" "}
+          </h1>
+          <h1 className="light-green no-margin">
+            {" "}
+            Be in a <i>State of Safety</i>
+          </h1>
         </div>
         <div className="banner-container">
-           <img src={LogoImg} alt="logo-2"></img>
-           <p>gives you access to crime data in your state. Use the interactive graph below to search for crime data where you live</p>
+          <img src={LogoImg} alt="logo-2"></img>
+          <p>
+            gives you access to crime data in your state. Use the interactive
+            graph below to search for crime data where you live
+          </p>
         </div>
         {isGeolocationSupported && !isGeolocationBlocked && !coordinates && (
           <GeolocationInfoBanner />
         )}
-        <InteractiveMap fullWidth={showFullWidthMap} />
+        <InteractiveMap fullWidth={true} />
       </div>
     );
   }

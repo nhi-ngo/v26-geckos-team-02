@@ -7,7 +7,8 @@ import CrimeTypeDropdown from "./CrimeTypeDropdown";
 import CrimeChart from "./CrimeChart";
 import NhiChart from "./NhiChart";
 import SampleChart2 from "./SampleChart2";
-import stateData from "../../../src/components/Navbar/data.json";
+import stateData from "../../../src/data/states.json";
+import InteractiveMap from "../../components/MainContent/InteractiveMap/InteractiveMap";
 
 export default function CrimeInfo(props) {
   const [info, setInfo] = useState([]);
@@ -89,6 +90,8 @@ export default function CrimeInfo(props) {
           <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
         </Box>
       </Box>
+
+      <InteractiveMap fullWidth={false} />
 
       <NhiChart
         data={filterData(info, crimeType)}
