@@ -7,7 +7,8 @@ import CrimeTypeDropdown from "./CrimeTypeDropdown";
 import CrimeChart from "./CrimeChart";
 import SampleChart1 from "./SampleChart1";
 import SampleChart2 from "./SampleChart2";
-import stateData from "../../../src/components/Navbar/data.json";
+import stateData from "../../../src/data/states.json";
+import InteractiveMap from "../../components/MainContent/InteractiveMap/InteractiveMap";
 
 export default function CrimeInfo(props) {
   const [info, setInfo] = useState([]);
@@ -69,8 +70,10 @@ export default function CrimeInfo(props) {
 
   return (
     <div>
-      <div className = "crime-info-heading-container" >
-        <h1 className="crime-info-heading">Crime data for <i>{abbrToState()}</i></h1>
+      <div className="crime-info-heading-container">
+        <h1 className="crime-info-heading">
+          Crime data for <i>{abbrToState()}</i>
+        </h1>
       </div>
 
       <Box display="flex" justifyContent="center" flexWrap="wrap">
@@ -87,6 +90,8 @@ export default function CrimeInfo(props) {
           <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
         </Box>
       </Box>
+
+      <InteractiveMap fullWidth={false} />
 
       <CrimeChart
         data={filterData(info, crimeType)}
