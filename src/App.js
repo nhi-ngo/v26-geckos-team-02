@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import axios from "axios";
 import { Container } from "@material-ui/core";
 import Landing from "./pages/Landing/Landing";
 import CrimeInfo from "./pages/CrimeInfo/CrimeInfo";
@@ -12,10 +13,10 @@ const ENV_DEV = process.env.NODE_ENV === "development";
 require("dotenv").config();
 
 export default function App() {
-  const [isGeolocationAllowed, setIsGeolocationAllowed] = useState(false);
   const [isGeolocationSupported, setIsGeolocationSupported] = useState(true);
   const [isGeolocationBlocked, setIsGeolocationBlocked] = useState(false);
   const [userCoordinates, setUserCoordinates] = useState(null);
+  const [userState, setUserState] = useState(null);
 
   const onSuccess = pos => {
     const crds = pos.coords;
@@ -25,8 +26,22 @@ export default function App() {
         `You are at lat: ${crds.latitude} lon: ${crds.longitude} plus or minus ${crds.accuracy} meters`,
       );
 
-    setIsGeolocationAllowed(true);
     setUserCoordinates(crds);
+
+    // Detect US state of user
+    axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${crds.longitude},${crds.latitude}.json?access_token=${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}&country=us&types=region`,
+      )
+      .then(res => {
+        const location = res.data.features[0].properties.short_code;
+        ENV_DEV && console.log("User location: ", location);
+
+        if (location.split("-")[0] === "US") {
+          ENV_DEV && console.log("User state set to ", location.split("-")[1]);
+          setUserState(location.split("-")[1]);
+        }
+      });
   };
 
   const onFailure = () => {
@@ -50,7 +65,7 @@ export default function App() {
   return (
     <Container>
       <BrowserRouter>
-        <Navbar geolocationAllowed={isGeolocationAllowed} />
+        <Navbar userState={userState} />
         <Switch>
           <Route
             path="/"

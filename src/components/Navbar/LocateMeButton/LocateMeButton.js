@@ -1,15 +1,21 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import { withRouter } from "react-router-dom";
 
-export default function LocateMeButton() {
+function LocateMeButton(props) {
+  const clickLocateMe = destinationState => {
+    props.history.push(`/crime/state/${destinationState}`);
+  };
+
   return (
     <div className="locate-me-container">
       <div
         className="locate-me-btn"
-        onClick={() => clickLocateMe()}
+        onClick={() => clickLocateMe(props.userState)}
       >
         Locate Me
       </div>
     </div>
   );
 }
+
+export default withRouter(LocateMeButton);
