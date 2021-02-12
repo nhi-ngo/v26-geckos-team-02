@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Container } from "@material-ui/core";
 
 import DateDropdown from "./DateDropdown";
 import CrimeTypeDropdown from "./CrimeTypeDropdown";
-import CrimeChart from "./CrimeChart";
-import NhiChart from "./NhiChart";
-import SampleChart2 from "./SampleChart2";
+import LineChart from "./LineChart";
 import stateData from "../../../src/data/states.json";
 import InteractiveMap from "../../components/MainContent/InteractiveMap/InteractiveMap";
 
@@ -69,14 +67,14 @@ export default function CrimeInfo(props) {
     });
 
   return (
-    <div>
+    <Container>
       <div className="crime-info-heading-container">
         <h1 className="crime-info-heading">
           Crime data for <i>{abbrToState()}</i>
         </h1>
       </div>
 
-      <Box display="flex" justifyContent="center" flexWrap="wrap">
+      <Box display="flex" justifyContent="center" flexWrap="wrap" marginBottom="2rem">
         <Box p={1}>
           <DateDropdown
             fromYear={fromYear}
@@ -91,28 +89,22 @@ export default function CrimeInfo(props) {
         </Box>
       </Box>
 
-      <InteractiveMap fullWidth={false} />
+      <Grid container justify="space-between" alignItems="center">
+        <Grid item xs={12} md={6}>
+          <LineChart
+            data={filterData(info, crimeType)}
+            crimeType={crimeType}
+            fromYear={fromYear}
+            toYear={toYear}
+          />
+        </Grid>
 
-      <NhiChart
-        data={filterData(info, crimeType)}
-        crimeType={crimeType}
-        fromYear={fromYear}
-        toYear={toYear}
-      />
+        <Grid item xs={12} md={4}>
+          <InteractiveMap fullWidth={false} />
+        </Grid>
+      </Grid>
 
-      {/* <CrimeChart
-        data={filterData(info, crimeType)}
-        crimeType={crimeType}
-        fromYear={fromYear}
-        toYear={toYear}
-      /> */}
 
-      {/* <SampleChart2
-        data={filterData(info, crimeType)}
-        crimeType={crimeType}
-        fromYear={fromYear}
-        toYear={toYear}
-      /> */}
-    </div>
+    </Container>
   );
 }

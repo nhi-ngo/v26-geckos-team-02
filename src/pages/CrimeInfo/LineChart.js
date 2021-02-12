@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3v4";
 
-function NhiChart(props) {
-  const { data, fromYear, toYear, crimeType } = props;
+function LineChart(props) {
+  const { data, fromYear, toYear, crimeType, population } = props;
 
   const crimeChart = useRef();
 
   useEffect(() => {
     drawChart();
   }, [data]);
+
 
   function drawChart() {
     // Clear previous graph
@@ -18,9 +19,9 @@ function NhiChart(props) {
     }
 
     // set the dimensions and margins of the graph
-    const margin = { top: 10, right: 20, bottom: 30, left: 40 };
-    const width = 800 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const margin = { top: 10, right: 20, bottom: 45, left: 60 };
+    const width = 660 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     // parse the year
     function convertToYearFormat(t) {
@@ -32,8 +33,9 @@ function NhiChart(props) {
     const svg = d3
       .select(".crimeChart")
       .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+
+      // make the graph responsively based on its predefined width and height
+      .attr("viewBox", `0 0 660 400`)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -44,15 +46,28 @@ function NhiChart(props) {
       .range([0, width]);
     svg
       .append("g")
+      .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(d3.timeYear.every(1)));
+      .call(d3.axisBottom(x)
+      .ticks(d3.timeYear.every(1)))
+
+      // rotate text labels for the x axis for big year range
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", "rotate(-65)");
+
 
     // Add Y axis
     const y = d3
       .scaleLinear()
       .domain([0, Math.max(...data)])
       .range([height, 0]);
-    svg.append("g").call(d3.axisLeft(y));
+    svg
+      .append("g")
+      .attr("class", "axis")
+      .call(d3.axisLeft(y));
 
     // Add the line
     svg
@@ -65,37 +80,43 @@ function NhiChart(props) {
         "d",
         d3
           .line()
-          .curve(d3.curveBasis)
+          // .curve(d3.curveBasis)
           .x((d, i) => x(convertToYearFormat(fromYear + i)))
           .y(d => y(d)),
       );
 
     // create a tooltip
     const Tooltip = d3
-      .select("#my_dataviz")
+      .select(".crimeChart")
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
-      .style("background-color", "white")
+      .style("background-color", "#121212")
+      .style("color", "white")
       .style("border", "solid")
       .style("border-width", "2px")
       .style("border-radius", "5px")
-      .style("padding", "5px");
+      .style("padding", "10px")
+      .style("margin-left", "40px")
+      .style("width", "150px")
+      .style("text-align", "center");
 
     // Three function that change the tooltip when user hover / move / leave a cell
     const mouseover = function (d) {
       Tooltip.style("opacity", 1);
     };
+
     const mousemove = function (d) {
-      Tooltip.html("Exact value: " + d.value)
+      Tooltip.html("Crime count: " + d.toLocaleString('en'))
         .style("left", d3.mouse(this)[0] + 70 + "px")
         .style("top", d3.mouse(this)[1] + "px");
     };
+
     const mouseleave = function (d) {
       Tooltip.style("opacity", 0);
     };
 
-    // Add the points
+    // Append a circle for each datapoint
     svg
       .append("g")
       .selectAll("dot")
@@ -109,10 +130,10 @@ function NhiChart(props) {
       .attr("cy", function (d) {
         return y(d);
       })
-      .attr("r", 8)
-      .attr("stroke", "#69b3a2")
-      .attr("stroke-width", 3)
-      .attr("fill", "white")
+      .attr("r", 3)
+      .attr("stroke", "black")
+      .attr("stroke-width", 4)
+      .attr("fill", "black")
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave);
@@ -120,10 +141,10 @@ function NhiChart(props) {
 
   return (
     <div>
-      <h3>{crimeType} data</h3>
-      <div ref={crimeChart} className="crimeChart"></div>
+      <h3>Count of {crimeType} Offenses </h3>
+      <div ref={crimeChart} className="crimeChart" id="crimeChart"></div>
     </div>
   );
 }
 
-export default NhiChart;
+export default LineChart;
