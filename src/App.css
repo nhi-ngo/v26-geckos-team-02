@@ -94,8 +94,8 @@ body {
 .footer {
   font-weight: 700;
   font-size: 0.9rem;
-  margin-top: calc(5% + 60px);
-  margin-bottom: 3rem;
+  margin-top: calc(3% + 20px);
+  margin-bottom: 2rem;
 }
 
 /* Result page */
@@ -110,6 +110,10 @@ body {
   font-size: 2.3rem;
   padding: 25px;
 }
+
+/* Line Chart */
+.axis { font: 14px lato; }
+
 
 @keyframes App-logo-spin {
   from {
