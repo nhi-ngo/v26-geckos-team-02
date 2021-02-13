@@ -124,16 +124,6 @@ body {
   }
 }
 
-/* @media (max-width: 680px) {
-  .banner-container p {
-    display: inline-block;
-    margin-top: 0;
-  }
-  .banner-container img {
-    
-    width: 47px;
-  }
-} */
 @media (max-width: 1000px) {
   .banner-container p {
     display: inline-block;
