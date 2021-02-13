@@ -147,7 +147,29 @@ body {
     padding: 24px 24px;
   }
 }
+@media (max-width: 960px) {
+  #map-container {
+    display: flex;
+    justify-content: center;
+  }
+ 
+}
 @media (max-width: 490px) {
+  #dropdown-container div {
+    display: flex;
+  }
+  .logo {
+    margin-bottom:1rem;
+  }
+  #dropdown-container .date-dropdown {
+    width: auto !important;
+    min-width: 100px;
+  }
+  .crimeTypes-dropdown {
+    
+    min-width:200px;
+    width: 200px !important;
+  }
   #navbar .navbar-container {
     flex-direction: column;
   }
