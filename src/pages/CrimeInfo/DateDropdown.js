@@ -4,7 +4,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
+import { withStyles } from "@material-ui/styles";
 import { withRouter } from "react-router-dom";
+
+const styles = theme => ({
+  icon: {
+    color: "white",
+  },
+});
 
 class dateDropDown extends Component {
   constructor(props) {
@@ -20,17 +27,35 @@ class dateDropDown extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
         {/* 1993 - 2019 */}
         <FormControl
           className="date-dropdown"
-          style={{ width: "180px", paddingLeft: "1rem", backgroundColor:"#121212" }}
+          style={{
+            width: "180px",
+            paddingLeft: "1rem",
+            backgroundColor: "#121212",
+          }}
         >
-          <InputLabel id="from" style={{color: "white", paddingLeft: "1rem", paddingTop: "0.2rem" }}>From</InputLabel>
+          <InputLabel
+            id="from"
+            style={{
+              color: "white",
+              paddingLeft: "1rem",
+              paddingTop: "0.6rem",
+            }}
+          >
+            From:
+          </InputLabel>
 
           <Select
-            style={{color: "white", fontWeight: "bold"}}
+            style={{ color: "white", fontWeight: "bold" }}
+            classes={{
+              icon: classes.icon,
+            }}
             labelId="from"
             id="from-year-select"
             value={this.props.fromYear}
@@ -68,11 +93,28 @@ class dateDropDown extends Component {
 
         <FormControl
           className="date-dropdown"
-          style = {{ width: "180px", marginLeft: "1rem", paddingLeft: "1rem", backgroundColor: "#121212" }}
+          style={{
+            width: "180px",
+            marginLeft: "1rem",
+            paddingLeft: "1rem",
+            backgroundColor: "#121212",
+          }}
         >
-          <InputLabel id="to-select" style={{color: "white", paddingLeft: "1rem", paddingTop: "0.2rem" }}>To</InputLabel>
+          <InputLabel
+            id="to-select"
+            style={{
+              color: "white",
+              paddingLeft: "1rem",
+              paddingTop: "0.6rem",
+            }}
+          >
+            To:
+          </InputLabel>
           <Select
-            style={{color: "white", fontWeight: "bold"}}
+            style={{ color: "white", fontWeight: "bold" }}
+            classes={{
+              icon: classes.icon,
+            }}
             labelId="to-select"
             id="to-select"
             value={this.props.toYear}
@@ -112,4 +154,4 @@ class dateDropDown extends Component {
   }
 }
 
-export default withRouter(dateDropDown);
+export default withStyles(styles)(withRouter(dateDropDown));
