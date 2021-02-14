@@ -25,7 +25,7 @@ export default function Navbar({ userState }) {
         <Link to="/" className="logo">
           <Logo />
         </Link>
-        <Grid className="two-btn-container" container justify="space-between" style={{ width: "auto" }}>
+        <Grid className="two-btn-container" container alignItems="center" justify="space-between" style={{ width: "auto" }}>
           <SearchLocation states={states} />
           {userState && <LocateMeButton userState={userState} />}
         </Grid>
