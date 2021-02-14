@@ -27,11 +27,17 @@ class dateDropDown extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, fromYear, toYear } = this.props;
+
+    const startYear = 1993,
+      endYear = 2019,
+      yearsArray = Array.from(
+        { length: endYear - startYear + 1 },
+        (_, i) => startYear + i,
+      );
 
     return (
       <div>
-        {/* 1993 - 2019 */}
         <FormControl
           className="date-dropdown"
           style={{
@@ -61,33 +67,11 @@ class dateDropDown extends Component {
             value={this.props.fromYear}
             onChange={e => this.updateYear("fromYear", e.target.value)}
           >
-            <MenuItem value={1993}>1993</MenuItem>
-            <MenuItem value={1994}>1994</MenuItem>
-            <MenuItem value={1995}>1995</MenuItem>
-            <MenuItem value={1996}>1996</MenuItem>
-            <MenuItem value={1997}>1997</MenuItem>
-            <MenuItem value={1998}>1998</MenuItem>
-            <MenuItem value={1999}>1999</MenuItem>
-            <MenuItem value={2000}>2000</MenuItem>
-            <MenuItem value={2001}>2001</MenuItem>
-            <MenuItem value={2002}>2002</MenuItem>
-            <MenuItem value={2003}>2003</MenuItem>
-            <MenuItem value={2004}>2004</MenuItem>
-            <MenuItem value={2005}>2005</MenuItem>
-            <MenuItem value={2006}>2006</MenuItem>
-            <MenuItem value={2007}>2007</MenuItem>
-            <MenuItem value={2008}>2008</MenuItem>
-            <MenuItem value={2009}>2009</MenuItem>
-            <MenuItem value={2010}>2010</MenuItem>
-            <MenuItem value={2011}>2011</MenuItem>
-            <MenuItem value={2012}>2012</MenuItem>
-            <MenuItem value={2013}>2013</MenuItem>
-            <MenuItem value={2014}>2014</MenuItem>
-            <MenuItem value={2015}>2015</MenuItem>
-            <MenuItem value={2016}>2016</MenuItem>
-            <MenuItem value={2017}>2017</MenuItem>
-            <MenuItem value={2018}>2018</MenuItem>
-            <MenuItem value={2019}>2019</MenuItem>
+            {yearsArray.map(i => (
+              <MenuItem key={i} value={i} disabled={i > toYear}>
+                {i}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
 
@@ -120,33 +104,11 @@ class dateDropDown extends Component {
             value={this.props.toYear}
             onChange={e => this.updateYear("toYear", e.target.value)}
           >
-            <MenuItem value={1993}>1993</MenuItem>
-            <MenuItem value={1994}>1994</MenuItem>
-            <MenuItem value={1995}>1995</MenuItem>
-            <MenuItem value={1996}>1996</MenuItem>
-            <MenuItem value={1997}>1997</MenuItem>
-            <MenuItem value={1998}>1998</MenuItem>
-            <MenuItem value={1999}>1999</MenuItem>
-            <MenuItem value={2000}>2000</MenuItem>
-            <MenuItem value={2001}>2001</MenuItem>
-            <MenuItem value={2002}>2002</MenuItem>
-            <MenuItem value={2003}>2003</MenuItem>
-            <MenuItem value={2004}>2004</MenuItem>
-            <MenuItem value={2005}>2005</MenuItem>
-            <MenuItem value={2006}>2006</MenuItem>
-            <MenuItem value={2007}>2007</MenuItem>
-            <MenuItem value={2008}>2008</MenuItem>
-            <MenuItem value={2009}>2009</MenuItem>
-            <MenuItem value={2010}>2010</MenuItem>
-            <MenuItem value={2011}>2011</MenuItem>
-            <MenuItem value={2012}>2012</MenuItem>
-            <MenuItem value={2013}>2013</MenuItem>
-            <MenuItem value={2014}>2014</MenuItem>
-            <MenuItem value={2015}>2015</MenuItem>
-            <MenuItem value={2016}>2016</MenuItem>
-            <MenuItem value={2017}>2017</MenuItem>
-            <MenuItem value={2018}>2018</MenuItem>
-            <MenuItem value={2019}>2019</MenuItem>
+            {yearsArray.map(i => (
+              <MenuItem key={i} value={i} disabled={i < fromYear}>
+                {i}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </div>
