@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import {
-  FormControl,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormHelperText,
-} from "@material-ui/core";
+import { FormControl, MenuItem, Select, InputLabel } from "@material-ui/core";
 
 function SearchLocation(props) {
   const handleStateChange = e => {
