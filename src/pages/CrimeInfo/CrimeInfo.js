@@ -74,7 +74,7 @@ export default function CrimeInfo(props) {
         </h1>
       </div>
 
-      <Box display="flex" justifyContent="center" flexWrap="wrap" marginBottom="2rem">
+      <Box id="dropdown-box" display="flex" justifyContent="center" flexWrap="wrap" marginBottom="2rem">
         <Box id="dropdown-container" p={1}>
           <DateDropdown
             className='dropdown'

@@ -175,6 +175,9 @@ body {
   }
 }
 @media (max-width: 490px) {
+  .title-container h1.title {
+    font-size: 1.8rem;
+  }
   #dropdown-container div {
     display: flex;
   }
@@ -184,6 +187,15 @@ body {
   #dropdown-container .date-dropdown {
     width: auto !important;
     min-width: 100px;
+  }
+  .crime-info-heading-container {
+    margin: 1rem 0;
+  }
+  .crime-info-heading {
+    font-size: 1.5rem;
+  }
+  #dropdown-box {
+    margin-bottom: 0;
   }
   .crimeTypes-dropdown {
     min-width: 200px;
