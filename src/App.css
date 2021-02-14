@@ -39,7 +39,7 @@ body {
 }
 .title-container {
   text-align: center;
-  margin: 2rem 0;
+  margin: 2rem 0 1.1rem 0;
 }
 .title {
   font-weight: 900;
@@ -47,22 +47,49 @@ body {
 .logo {
   width: 100px;
 }
+
 #search-location {
   margin-right: 32px;
-  align-self: center;
+  border: 1px solid #121212;
 }
+
 #states {
   font-size: 16px;
   font-family: "Lato", sans-serif;
-  width: 164px;
-  padding: 12px 12px;
-  border: 1px solid #121212;
+  color: #121212;
+  margin-top: -8px;
 }
+
+#states.MuiInputLabel-shrink {
+  transform: translate(0, 12px) scale(0.75);
+}
+
+/* Arrow-down icon for dropdown */
+#search-location .MuiSelect-icon {
+  color: #121212;
+  padding-right: 0.5rem;
+  margin-top: -7px;
+}
+
+/* Overwrite the original styling */
+#search-location .MuiInput-underline::before {
+  border-bottom: #121212;
+}
+
+#search-location .MuiInput-underline::after {
+  border-bottom: transparent;
+}
+
+#search-location .MuiInputBase-input {
+  background-color: transparent;
+}
+
 .banner-container {
   background-color: #121212;
   color: white;
   padding: 24px 48px;
   display: flex;
+  margin-bottom: 35px;
 }
 .banner-container img {
   width: 84px;

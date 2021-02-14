@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import { FormControl, MenuItem, Select, InputLabel } from "@material-ui/core";
 
 function SearchLocation(props) {
   const handleStateChange = e => {
@@ -22,20 +23,30 @@ function SearchLocation(props) {
 
   return (
     <div id="search-location">
-      <select
-        id="states"
-        onChange={handleStateChange}
-        value={selection === "Select a state" ? "" : selection}
+      <FormControl
+        style={{
+          width: "165px",
+          height: "44px",
+          backgroundColor: "transparent",
+        }}
       >
-        <option value="" hidden>
+        <InputLabel id="states" style={{ paddingLeft: "1rem" }}>
           Select a state
-        </option>
-        {props.states.map(state => (
-          <option value={state.abbr} key={state.abbr}>
-            {state.name}, {state.abbr}
-          </option>
-        ))}
-      </select>
+        </InputLabel>
+
+        <Select
+          onChange={handleStateChange}
+          labelId="states"
+          style={{ color: "#121212", fontWeight: "bold", paddingLeft: "1rem" }}
+          value={selection === "Select a state" ? "" : selection}
+        >
+          {props.states.map(state => (
+            <MenuItem value={state.abbr} key={state.abbr}>
+              {state.name}, {state.abbr}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
     </div>
   );
 }
