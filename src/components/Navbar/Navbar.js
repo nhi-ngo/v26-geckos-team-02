@@ -8,7 +8,7 @@ import Logo from "./Logo/Logo";
 import LocateMeButton from "./LocateMeButton/LocateMeButton";
 import SearchLocation from "./SearchLocation/SearchLocation";
 
-export default function Navbar(props) {
+export default function Navbar({ userState }) {
   const [states, setStates] = useState([]);
 
   const fetchListOfStates = () => {
@@ -21,13 +21,13 @@ export default function Navbar(props) {
 
   return (
     <Box id="navbar" mt={4}>
-      <Grid container justify="space-between">
+      <Grid className="navbar-container" container justify="space-between">
         <Link to="/" className="logo">
           <Logo />
         </Link>
-        <Grid container justify="space-between" style={{ width: "auto" }}>
+        <Grid className="two-btn-container" container alignItems="center" justify="space-between" style={{ width: "auto" }}>
           <SearchLocation states={states} />
-          <LocateMeButton />
+          {userState && <LocateMeButton userState={userState} />}
         </Grid>
       </Grid>
     </Box>

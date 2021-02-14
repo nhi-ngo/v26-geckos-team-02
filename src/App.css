@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,900&display=swap");
 body {
   font-family: "Lato", sans-serif;
 }
@@ -39,27 +39,57 @@ body {
 }
 .title-container {
   text-align: center;
-  margin: 2rem 0;
+  margin: 2rem 0 1.1rem 0;
+}
+.title {
+  font-weight: 900;
 }
 .logo {
   width: 100px;
 }
+
 #search-location {
   margin-right: 32px;
-  align-self: center;
+  border: 1px solid #121212;
 }
+
 #states {
   font-size: 16px;
   font-family: "Lato", sans-serif;
-  width: 164px;
-  padding: 12px 12px;
-  border: 1px solid #121212;
+  color: #121212;
+  margin-top: -8px;
 }
+
+#states.MuiInputLabel-shrink {
+  transform: translate(0, 12px) scale(0.75);
+}
+
+/* Arrow-down icon for dropdown */
+#search-location .MuiSelect-icon {
+  color: #121212;
+  padding-right: 0.5rem;
+  margin-top: -7px;
+}
+
+/* Overwrite the original styling */
+#search-location .MuiInput-underline::before {
+  border-bottom: #121212;
+}
+
+#search-location .MuiInput-underline::after {
+  border-bottom: transparent;
+}
+
+#search-location .MuiInputBase-input {
+  background-color: transparent;
+}
+
 .banner-container {
   background-color: #121212;
   color: white;
   padding: 24px 48px;
   display: flex;
+  margin-bottom: 35px;
 }
 .banner-container img {
   width: 84px;
@@ -112,8 +142,9 @@ body {
 }
 
 /* Line Chart */
-.axis { font: 14px lato; }
-
+.axis {
+  font: 14px lato;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -121,5 +152,71 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1000px) {
+  .banner-container p {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
+  .banner-container img {
+    display: inline-block;
+    width: 64px;
+  }
+  .banner-container {
+    padding: 24px 24px;
+  }
+}
+@media (max-width: 960px) {
+  #map-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 490px) {
+  #dropdown-container div {
+    display: flex;
+  }
+  .logo {
+    margin-bottom: 1rem;
+  }
+  #dropdown-container .date-dropdown {
+    width: auto !important;
+    min-width: 100px;
+  }
+  .crimeTypes-dropdown {
+    min-width: 200px;
+    width: 200px !important;
+  }
+  #navbar .navbar-container {
+    flex-direction: column;
+  }
+  #navbar .two-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  #navbar .two-btn-container #search-location {
+    margin-right: 0;
+    flex: 1;
+  }
+  #navbar .two-btn-container .locate-me-container {
+    margin-left: 0.5rem;
+    width: auto;
+    align-self: center;
+    text-align: center;
+    flex: 1;
+  }
+  #states {
+    width: auto;
+  }
+  .banner-container p {
+    margin-top: 0rem;
+  }
+  .banner-container img {
+    margin-right: 0.5rem;
+    width: 44px;
   }
 }
