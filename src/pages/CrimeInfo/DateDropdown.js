@@ -10,6 +10,7 @@ import { withRouter } from "react-router-dom";
 const styles = theme => ({
   icon: {
     color: "white",
+    paddingRight: "0.5rem"
   },
 });
 

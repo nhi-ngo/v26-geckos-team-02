@@ -25,7 +25,7 @@ function SearchLocation(props) {
     <div id="search-location">
       <FormControl
         style={{
-          width: "165px",
+          width: "205px",
           height: "44px",
           backgroundColor: "transparent",
         }}

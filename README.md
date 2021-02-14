@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# State of Safety (SOS) ![logo](public/logo_readme.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Knowledge = safety, Safety = power. Be in a State of Safety. [SOS](https://state-of-safety.herokuapp.com/) gives you access to the crime data in your state.
 
-## Available Scripts
+<table>
+  <tr>
+      <td vlign="center">
+        <img src="public/readme1.png" alt="readme1">
+      </td>
+      <td vlign="center">
+        <img src="public/readme2.png" alt="readme2">
+      </td>
+    </tr>
+</table>
 
-In the project directory, you can run:
+# Wireframes
+<table>
+  <tr>
+      <td vlign="center">
+        <img src="public/wireframe1.png" alt="wireframe1">
+      </td>
+      <td vlign="center">
+        <img src="public/wireframe2.png" alt="wireframe2">
+      </td>
+    </tr>
+</table>
 
-### `npm start`
+# User Stories for MVP
+- Select the state from the dropdown list of states
+- Select the specific state on the interactive map
+- Click on "Locate Me" to be automatically located
+- Be able to filter through various crime criteria (year range and crime type) to learn more about specific crimes that are of direct concern
+- A line chart to show the crime data for selected crime type
+- See the current selected state on the map by area
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Dependencies
+React, Material UI, D3, Axios
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# API
+- [FBI Crime Data API](https://crime-data-explorer.fr.cloud.gov/api)
+- [Mapbox](https://www.mapbox.com/)
 
-### `npm test`
+# Installation
+Clone the repository to your local machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git clone https://github.com/chingu-voyages/v26-geckos-team-02.git
+```
 
-### `npm run build`
+Cd into the new directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+cd v26-geckos-team-02
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm i
+```
 
-### `npm run eject`
+Create a .env file with a FBI Crime Data API key and Mapbox access token (see .env.sample file)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Start the app locally:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm start
+```
+# Authors
+Product Owner: [David](), Developers: [Dario](https://github.com/theborgh), [Jennifer](https://github.com/spicysos), [Nhi](https://github.com/nhi-ngo)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+State of Safety App | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs | Heroku: https://state-of-safety.herokuapp.com/
