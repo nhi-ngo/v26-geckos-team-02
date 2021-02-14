@@ -69,7 +69,7 @@ class dateDropDown extends Component {
             onChange={e => this.updateYear("fromYear", e.target.value)}
           >
             {yearsArray.map(i => (
-              <MenuItem key={i} value={i} disabled={i > toYear}>
+              <MenuItem key={i} value={i} disabled={i >= toYear}>
                 {i}
               </MenuItem>
             ))}
@@ -106,7 +106,7 @@ class dateDropDown extends Component {
             onChange={e => this.updateYear("toYear", e.target.value)}
           >
             {yearsArray.map(i => (
-              <MenuItem key={i} value={i} disabled={i < fromYear}>
+              <MenuItem key={i} value={i} disabled={i <= fromYear}>
                 {i}
               </MenuItem>
             ))}
