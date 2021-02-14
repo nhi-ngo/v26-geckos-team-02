@@ -172,4 +172,4 @@ class InteractiveMap extends Component {
   }
 }
 
-export default withRouter(InteractiveMap);
+export default React.memo(withRouter(InteractiveMap));
