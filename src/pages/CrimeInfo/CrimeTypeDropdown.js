@@ -8,6 +8,7 @@ import { withStyles } from "@material-ui/styles";
 const styles = theme => ({
   icon: {
     color: "white",
+    paddingRight: "0.5rem"
   },
 });
 
