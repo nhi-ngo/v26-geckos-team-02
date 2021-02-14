@@ -64,7 +64,7 @@ class InteractiveMap extends Component {
     );
   };
 
-  componentDidMount() {
+  drawMap = () => {
     this.path = d3.geoPath();
     this.zoom = d3.zoom().scaleExtent([1, 8]).on("zoom", this.zoomed);
 
@@ -142,13 +142,33 @@ class InteractiveMap extends Component {
     }
 
     this.svg.call(this.zoom);
+  };
+
+  componentDidMount() {
+    this.drawMap();
+  }
+
+  componentDidUpdate() {
+    const intMap = document.querySelector(".interactiveMap");
+
+    while (intMap.firstChild) {
+      intMap.removeChild(intMap.lastChild);
+    }
+
+    this.drawMap();
   }
 
   render() {
     const { fullWidth } = this.props;
     const styleObj = fullWidth ? {} : { width: "400px", height: "300px" };
 
-    return <div style={styleObj} ref={this.interactiveMap}></div>;
+    return (
+      <div
+        style={styleObj}
+        ref={this.interactiveMap}
+        className="interactiveMap"
+      ></div>
+    );
   }
 }
 
