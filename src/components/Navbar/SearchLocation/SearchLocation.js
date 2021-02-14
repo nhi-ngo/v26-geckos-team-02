@@ -22,16 +22,16 @@ function SearchLocation(props) {
 
   return (
     <div id="search-location">
-      <select id="states" onChange={handleStateChange}>
-        <option value="" hidden selected={selection === "Select a state"}>
+      <select
+        id="states"
+        onChange={handleStateChange}
+        value={selection === "Select a state" ? "" : selection}
+      >
+        <option value="" hidden>
           Select a state
         </option>
         {props.states.map(state => (
-          <option
-            value={state.abbr}
-            key={state.abbr}
-            selected={selection === state.abbr}
-          >
+          <option value={state.abbr} key={state.abbr}>
             {state.name}, {state.abbr}
           </option>
         ))}
