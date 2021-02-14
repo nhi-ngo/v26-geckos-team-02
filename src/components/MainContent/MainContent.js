@@ -13,12 +13,12 @@ export default class MainContent extends Component {
     return (
       <div>
         <div className="title-container">
-          <h1 className="light-green no-margin">
-            Knowledge = safety, Safety = power.{" "}
+          <h1 className="light-green no-margin title">
+            Knowledge = safety. Safety = power.{" "}
           </h1>
-          <h1 className="light-green no-margin">
+          <h1 className="light-green no-margin title">
             {" "}
-            Be in a <i>State of Safety</i>
+            Be in a <i>State of Safety</i>.
           </h1>
         </div>
         <div className="banner-container">

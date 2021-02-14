@@ -17,7 +17,7 @@ class CrimeChart extends Component {
   }
 
   componentDidUpdate() {
-    // Remove previous graphs before creating the next
+    // Remove previous chart before creating the next
     const chart = document.querySelector(".crimeChart");
     while (chart.firstChild) {
       chart.removeChild(chart.lastChild);
