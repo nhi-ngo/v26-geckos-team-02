@@ -1,6 +1,7 @@
 # State of Safety (SOS) ![logo](public/logo_readme.png)
 
-> Knowledge = safety, Safety = power. Be in a State of Safety. [SOS](https://state-of-safety.herokuapp.com/) gives you access to the crime data in your state.
+> Knowledge = safety, Safety = power. Be in a State of Safety. [SOS](https://stateofsafety.netlify.app/) gives you access to the crime data in your state.
+
 
 <table>
   <tr>
@@ -69,4 +70,4 @@ npm start
 # Authors
 Product Owner: [David](), Developers: [Dario](https://github.com/theborgh), [Jennifer](https://github.com/spicysos), [Nhi](https://github.com/nhi-ngo)
 
-State of Safety App | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs | Heroku: https://state-of-safety.herokuapp.com/
+State of Safety App | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs | Netlify: https://stateofsafety.netlify.app/
