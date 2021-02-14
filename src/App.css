@@ -93,7 +93,7 @@ body {
 }
 .banner-container img {
   width: 84px;
-  height: fit-content;
+  height: intrinsic;
   margin-right: 1rem;
 }
 .banner-container p {
