@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import * as topojson from "topojson-client";
 import us from "../../../data/states-albers-10m.json";
 import { withRouter } from "react-router-dom";
+import { Container } from "@material-ui/core";
 import statesAbbr from "../../../data/states.json";
 
 class InteractiveMap extends Component {
@@ -146,9 +147,13 @@ class InteractiveMap extends Component {
 
   render() {
     const { fullWidth } = this.props;
-    const styleObj = fullWidth ? {} : { width: "400px", height: "300px" };
+    const styleObj = fullWidth ? { maxWidth: "1100px", height: "auto"} : { width: "400px", height: "300px" };
 
-    return <div style={styleObj} ref={this.interactiveMap}></div>;
+    return (
+    <div>
+      <Container style={styleObj} ref={this.interactiveMap}></Container>
+    </div>
+    )
   }
 }
 
