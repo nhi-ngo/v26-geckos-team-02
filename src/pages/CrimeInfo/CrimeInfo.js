@@ -75,8 +75,9 @@ export default function CrimeInfo(props) {
       </div>
 
       <Box display="flex" justifyContent="center" flexWrap="wrap" marginBottom="2rem">
-        <Box p={1}>
+        <Box id="dropdown-container" p={1}>
           <DateDropdown
+            className='dropdown'
             fromYear={fromYear}
             toYear={toYear}
             updateFromYear={updateFrom}
@@ -84,7 +85,7 @@ export default function CrimeInfo(props) {
           />
         </Box>
 
-        <Box p={1}>
+        <Box className='dropdown' p={1}>
           <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
         </Box>
       </Box>
@@ -99,7 +100,7 @@ export default function CrimeInfo(props) {
           />
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid id="map-container" item xs={12} md={4}>
           <InteractiveMap fullWidth={false} />
         </Grid>
       </Grid>

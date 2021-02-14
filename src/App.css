@@ -123,3 +123,71 @@ body {
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 1000px) {
+  .banner-container p {
+    display: inline-block;
+    margin-top:0.5rem;
+  }
+  .banner-container img {
+    display: inline-block;
+    width: 64px;
+  }
+  .banner-container {
+    padding: 24px 24px;
+  }
+}
+@media (max-width: 960px) {
+  #map-container {
+    display: flex;
+    justify-content: center;
+  }
+ 
+}
+@media (max-width: 490px) {
+  #dropdown-container div {
+    display: flex;
+  }
+  .logo {
+    margin-bottom:1rem;
+  }
+  #dropdown-container .date-dropdown {
+    width: auto !important;
+    min-width: 100px;
+  }
+  .crimeTypes-dropdown {
+    
+    min-width:200px;
+    width: 200px !important;
+  }
+  #navbar .navbar-container {
+    flex-direction: column;
+  }
+  #navbar .two-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  #navbar .two-btn-container #search-location {
+    margin-right: 0;
+    flex: 1;
+  }
+  #navbar .two-btn-container .locate-me-container {
+    margin-left: 0.5rem;
+    width: auto;
+    align-self: center;
+    text-align: center;
+    flex: 1;
+  }
+  #states {
+    width: auto;
+  }
+  .banner-container p {
+    margin-top:0rem;
+  }
+  .banner-container img {
+    margin-right: 0.5rem;
+    width: 44px;
+  }
+}

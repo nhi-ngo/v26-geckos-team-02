@@ -38,7 +38,7 @@ class InteractiveMap extends Component {
 
     event.stopPropagation();
     this.states.transition().style("fill", null);
-    d3.select(event.target).transition().style("fill", "red");
+    d3.select(event.target).transition().style("fill", "#049c0b");
 
     this.svg
       .transition()
@@ -121,7 +121,7 @@ class InteractiveMap extends Component {
       );
 
       this.states.transition().style("fill", null);
-      d3.select(obj).transition().style("fill", "red");
+      d3.select(obj).transition().style("fill", "#049c0b");
 
       this.svg
         .transition()

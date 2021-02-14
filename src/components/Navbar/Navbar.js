@@ -21,11 +21,11 @@ export default function Navbar({ userState }) {
 
   return (
     <Box id="navbar" mt={4}>
-      <Grid container justify="space-between">
+      <Grid className="navbar-container" container justify="space-between">
         <Link to="/" className="logo">
           <Logo />
         </Link>
-        <Grid container justify="space-between" style={{ width: "auto" }}>
+        <Grid className="two-btn-container" container justify="space-between" style={{ width: "auto" }}>
           <SearchLocation states={states} />
           {userState && <LocateMeButton userState={userState} />}
         </Grid>
