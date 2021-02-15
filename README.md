@@ -1,7 +1,16 @@
-# State of Safety (SOS) ![logo](public/logo_readme.png)
 
-> Knowledge = safety, Safety = power. Be in a State of Safety. [SOS](https://stateofsafety.netlify.app/) gives you access to the crime data in your state.
+<p align="center">
+  <img src="./public/logo_readme.png">
+</p>
 
+<p align="center">
+  <span style="font-weight: bold">Knowledge = safety, Safety = power. Be in a State of Safety.</span>
+  <a href="https://stateofsafety.netlify.app/" target="_blank">SOS</a> gives you access to the crime data in your state.
+</p>
+
+<p align="center">
+  This app displays historical US state-level data from the FBI Crime Data API to show trends for several types of crimes.
+</p>
 
 <table>
   <tr>
@@ -67,6 +76,8 @@ Start the app locally:
 ```
 npm start
 ```
+# Contribute
+Feel free to open a PR or fork this project and modify it as you wish!
 # Authors
 Product Owner: [David](), Developers: [Dario](https://github.com/theborgh), [Jennifer](https://github.com/spicysos), [Nhi](https://github.com/nhi-ngo)
 
