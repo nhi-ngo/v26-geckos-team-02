@@ -27,6 +27,11 @@ export default class Footer extends Component {
           in use. Your location data will be used to determine the state name of
           your location, and display appropriate crime data in that state.
         </p>
+
+        <p style={{textAlign: "center", paddingTop: "15px"}}>© 2021{" "}
+          <a className="footer-link" href="https://chingu.io/" target="_blank">Chingu</a>{" "}
+          <a className="footer-link" href="https://github.com/chingu-voyages/v26-geckos-team-02" target="_blank">Geckos-Team-02</a> | Voyage 26
+        </p>
       </div>
     );
   }
