@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { FormControl, MenuItem, Select, InputLabel } from "@material-ui/core";
 
-function SearchLocation(props) {
-  const handleStateChange = e => {
+function StatesDropdown(props) {
+  const [selected, setSelected] = useState("Select a state");
+
+  const handleChange = e => {
     props.history.push(`/crime/state/${e.target.value}`);
   };
-
-  const [selection, setSelection] = useState("Select a state");
 
   useEffect(() => {
     const regexResult = props.location.pathname.match(
@@ -15,9 +15,9 @@ function SearchLocation(props) {
     );
 
     if (regexResult) {
-      setSelection(regexResult[1]);
+      setSelected(regexResult[1]);
     } else {
-      setSelection("Select a state");
+      setSelected("Select a state");
     }
   }, [props.history.location.pathname]);
 
@@ -35,10 +35,10 @@ function SearchLocation(props) {
         </InputLabel>
 
         <Select
-          onChange={handleStateChange}
+          onChange={handleChange}
           labelId="states"
           style={{ color: "#121212", fontWeight: "bold", paddingLeft: "1rem" }}
-          value={selection === "Select a state" ? "" : selection}
+          value={selected === "Select a state" ? "" : selected}
         >
           {props.states.map(state => (
             <MenuItem value={state.abbr} key={state.abbr}>
@@ -51,4 +51,4 @@ function SearchLocation(props) {
   );
 }
 
-export default withRouter(SearchLocation);
+export default withRouter(StatesDropdown);

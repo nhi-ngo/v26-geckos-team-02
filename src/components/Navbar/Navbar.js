@@ -6,7 +6,7 @@ import data from "../../data/states.json";
 
 import Logo from "./Logo/Logo";
 import LocateMeButton from "./LocateMeButton/LocateMeButton";
-import SearchLocation from "./SearchLocation/SearchLocation";
+import StatesDropdown from "./StatesDropdown/StatesDropdown";
 
 export default function Navbar({ userState }) {
   const [states, setStates] = useState([]);
@@ -26,7 +26,7 @@ export default function Navbar({ userState }) {
           <Logo />
         </Link>
         <Grid className="two-btn-container" container alignItems="center" justify="space-between" style={{ width: "auto" }}>
-          <SearchLocation states={states} />
+          <StatesDropdown states={states} />
           {userState && <LocateMeButton userState={userState} />}
         </Grid>
       </Grid>
