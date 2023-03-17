@@ -29,7 +29,6 @@ export default class Footer extends Component {
         </p>
 
         <p style={{ textAlign: "center", paddingTop: "15px" }}>
-          © 2021{" "}
           <a className="footer-link" href="https://chingu.io/" target="_blank">
             Chingu
           </a>{" "}
