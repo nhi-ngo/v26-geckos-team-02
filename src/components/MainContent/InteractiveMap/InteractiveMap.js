@@ -66,8 +66,9 @@ class InteractiveMap extends Component {
   };
 
   zoomOnState = regexResult => {
-    const stateName = statesAbbr.find(state => state.abbr === regexResult[1])
-      .name;
+    const stateName = statesAbbr.find(
+      state => state.abbr === regexResult[1],
+    ).name;
 
     const obj = this.states._groups[0].find(
       state => state.textContent === stateName,
@@ -126,7 +127,14 @@ class InteractiveMap extends Component {
       .data(topojson.feature(us, us.objects.states).features)
       .join("path")
       .on("click", this.clicked)
-      .attr("d", this.path);
+      .attr("d", this.path)
+      //Hover over effects
+      .on("mouseover", function () {
+        d3.select(this).transition().duration("50").attr("opacity", ".75");
+      })
+      .on("mouseout", function () {
+        d3.select(this).transition().duration("50").attr("opacity", "1");
+      });
 
     this.states.append("title").text(d => d.properties.name);
 
