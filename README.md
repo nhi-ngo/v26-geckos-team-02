@@ -47,7 +47,7 @@
 React, Material UI, D3, Axios
 
 # API
-- [FBI Crime Data API](https://crime-data-explorer.fr.cloud.gov/api)
+- [FBI Crime Data API](https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/docApi)
 - [Mapbox](https://www.mapbox.com/)
 
 # Installation
