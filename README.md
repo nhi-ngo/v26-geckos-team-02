@@ -5,7 +5,7 @@
 
 <p align="center">
   <span style="font-weight: bold">Knowledge = safety, Safety = power. Be in a State of Safety.</span>
-  <a href="https://stateofsafety.netlify.app/" target="_blank">SOS</a> gives you access to the crime data in your state.
+  <a href="https://sosstateofsafety.netlify.app/" target="_blank">SOS</a> gives you access to the crime data in your state.
 </p>
 
 <p align="center">
@@ -81,4 +81,4 @@ Feel free to open a PR or fork this project and modify it as you wish!
 # Authors
 Product Owner: [David](), Developers: [Dario](https://github.com/theborgh), [Jennifer](https://github.com/spicysos), [Nhi](https://github.com/nhi-ngo)
 
-State of Safety App | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs | Netlify: https://stateofsafety.netlify.app/
+State of Safety App | Voyage-26 | https://chingu.io/ | Twitter: https://twitter.com/ChinguCollabs | Netlify: https://sosstateofsafety.netlify.app/
