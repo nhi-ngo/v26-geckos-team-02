@@ -28,13 +28,13 @@ export default function CrimeInfo(props) {
   const fetchCrimeInfo = () => {
     axios
       .get(
-        `https://api.usa.gov/crime/fbi/sapi/api/estimates/states/${props.match.params.stateId}/${fromYear}/${toYear}?API_KEY=${API_KEY}`,
+        `https://api.usa.gov/crime/fbi/cde/estimate/state/${props.match.params.stateId}?from=${fromYear}&to=${toYear}&API_KEY=${API_KEY}`,
       )
-      .then(res => setInfo(res.data.results.sort((a, b) => a.year - b.year)));
+      .then(res => setInfo(res.data.sort((a, b) => a.year - b.year)));
   };
 
   useEffect(() => {
-    fetchCrimeInfo();
+  fetchCrimeInfo();
   }, [stateId, fromYear, toYear]);
 
   const getCrimeType = type => {
@@ -74,10 +74,16 @@ export default function CrimeInfo(props) {
         </h1>
       </div>
 
-      <Box id="dropdown-box" display="flex" justifyContent="center" flexWrap="wrap" marginBottom="2rem">
+      <Box
+        id="dropdown-box"
+        display="flex"
+        justifyContent="center"
+        flexWrap="wrap"
+        marginBottom="2rem"
+      >
         <Box id="dropdown-container" p={1}>
           <DateDropdown
-            className='dropdown'
+            className="dropdown"
             fromYear={fromYear}
             toYear={toYear}
             updateFromYear={updateFrom}
@@ -85,7 +91,7 @@ export default function CrimeInfo(props) {
           />
         </Box>
 
-        <Box className='dropdown' p={1}>
+        <Box className="dropdown" p={1}>
           <CrimeTypeDropdown type={crimeType} getCrimeType={getCrimeType} />
         </Box>
       </Box>
@@ -104,8 +110,6 @@ export default function CrimeInfo(props) {
           <InteractiveMap fullWidth={false} />
         </Grid>
       </Grid>
-
-
     </Container>
   );
 }
